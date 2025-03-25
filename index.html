@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Iniciar sesión</title>
+    
+     <link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+<div class="container">
+      <h1>Iniciar Sesión</h1>
+      <div class="imagen-centrada">
+        <img src="IJFK.jpg" width="150" height="150" />
+      </div><br /><br />
+</head>
+<body>
+    <form id="loginForm">
+        <label for="username">Usuario:</label><br>
+        <input type="text" id="username" name="username"><br><br>
+        <label for="password">Contraseña:</label><br>
+        <input type="password" id="password" name="password"><br><br>
+        <button type="submit">Iniciar sesión</button>
+    </form>
+
+     <script>
+        const usuarios = [
+            { username: 'Fanny Lopez', password: '0801200104722' },
+            { username: 'Jonathan Matamoros', password: 'Jonita2025' },
+            { username: 'Engell Bonilla', password: '30/04/23' }
+        ];
+
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            const usuarioEncontrado = usuarios.find(usuario => usuario.username === username && usuario.password === password);
+
+            if (usuarioEncontrado) {
+                alert("¡Bienvenido " + username + "!");
+                window.location.href = 'pagina1.html';
+            } else {
+                alert('Usuario o contraseña incorrectos');
+            }
+        });
+    </script>
+</body>
+</html>
