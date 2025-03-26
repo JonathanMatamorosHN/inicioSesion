@@ -75,9 +75,7 @@
                 </tbody>
         </table>
     </div>
-    
-
-    <script>
+     <script>
         const usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
         const usersTable = document.getElementById('usersTable').getElementsByTagName('tbody')[0];
 
@@ -87,13 +85,32 @@
             const actionsCell = newRow.insertCell();
 
             usernameCell.textContent = usuario.username;
-            actionsCell.innerHTML = `<button class="delete-button" onclick="eliminarUsuario(${index})">Eliminar</button>`;
+            actionsCell.innerHTML = `
+                <button onclick="verUsuario(${index})">Ver</button>
+                <button onclick="editarUsuario(${index})">Editar</button>
+                <button onclick="eliminarUsuario(${index})">Eliminar</button>
+            `;
         });
+
+        function verUsuario(index) {
+            const usuario = usuarios[index];
+            alert(`Usuario: ${usuario.username}\nContraseña: ${usuario.password}`);
+        }
+
+        function editarUsuario(index) {
+            const usuario = usuarios[index];
+            const nuevoUsername = prompt('Nuevo usuario:', usuario.username);
+            if (nuevoUsername) {
+                usuarios[index].username = nuevoUsername;
+                localStorage.setItem('usuarios', JSON.stringify(usuarios));
+                location.reload();
+            }
+        }
 
         function eliminarUsuario(index) {
             usuarios.splice(index, 1);
             localStorage.setItem('usuarios', JSON.stringify(usuarios));
-            location.reload(); // Recargar la página para actualizar la lista
+            location.reload();
         }
     </script>
     
