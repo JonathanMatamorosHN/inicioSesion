@@ -5,15 +5,17 @@ body {
     align-items: center;
     height: 100vh;
     margin: 10;
-    background-color: #3b9292;
+    background-color: #45b5da;
 }
 
 .container {
     background-color: #a5d8e9;
     padding: 20px;
+    border: 5px solid #c7d4d4;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     text-align: center;
+
 }
 
 label {

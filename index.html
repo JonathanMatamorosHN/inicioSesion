@@ -11,6 +11,34 @@
       </div><br /><br />
 </head>
 <body>
+    <style>
+        #botonProtegido {
+            position: fixed; /* Fija el botón en la parte superior */
+            top: 10px;
+            right: 10px;
+            background-color: red;
+            border: none;
+            color: black;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        #contenidoProtegido {
+            display: none; /* Oculta el contenido protegido inicialmente */
+            margin-top: 60px; /* Ajusta el margen para evitar superposición con el botón */
+        }
+    </style>
+    <button id="botonProtegido">Acceso Restringido</button>
+
+    <div id="contenidoProtegido">
+        <h2>Contenido Protegido</h2>
+        <p>Este contenido solo se muestra después de ingresar la contraseña.</p>
+        </div>
     <form id="loginForm">
         <label for="username">Usuario:</label><br>
         <input type="text" id="username" placeholder="Usuario" name="username" required><br><br>
@@ -20,7 +48,17 @@
     </form>
      <p>¿No tienes una cuenta? <a href="Registro.html">Regístrate aquí</a>.</p>
     </div>
-<script>
+</head>
+<body>
+<script>document.getElementById('botonProtegido').addEventListener('click', function() {
+    var contraseña = prompt("Ingresa la contraseña:");
+    if (contraseña === "JonathanMatamoros2025") { // Reemplaza con tu contraseña
+        window.location.href = "ver_usuario.html"; // Redirige a la página deseada
+    } else {
+        alert("Contraseña incorrecta.");
+    }
+});</script>
+     <script>
         document.getElementById('loginForm').addEventListener('submit', function(event) {
             event.preventDefault();
 
@@ -31,32 +69,15 @@
             const usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
 
             const usuarioEncontrado = usuarios.find(usuario => usuario.username === username && usuario.password === password);
-        });
-    </script>
-     <script>
-        const usuarios = [
-            { username: 'Fanny Lopez', password: '0801200104722' },
-            { username: 'Jonathan Matamoros', password: 'Jonita2025' },
-            { username: 'Engell Bonilla', password: '30/04/23' },
-            { username: 'Alex Cisnado', password: 'Jonathan2025' }
-        ];
-
-        document.getElementById('loginForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-
-            const usuarioEncontrado = usuarios.find(usuario => usuario.username === username && usuario.password === password);
 
             if (usuarioEncontrado) {
                 alert("¡Bienvenido " + username + "!");
                 window.location.href = 'pagina1.html';
             } else {
-        alert("Usuario o contraseña incorrectos.");
-    }
-            
+                alert('Usuario o contraseña incorrectos');
+            }
         });
     </script>
+
 </body>
 </html>
