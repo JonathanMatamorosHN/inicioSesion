@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registro</title>
+ <link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+<body>
+    <div class="container">
+        <h2>Registro</h2>
+         <div class="imagen-centrada">
+        <img src="IJFK.jpg" width="150" height="150" />
+      </div><br /><br />
+        <form id="registerForm">
+            <label for="username">Usuario:</label><br>
+            <input type="text" id="username" placeholder="Usuario" name="username"><br><br>
+            <label for="password">Contraseña:</label><br>
+            <input type="password" id="password"  placeholder="Contraseña" name="password"><br><br>
+            <button type="submit">Registrarse</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('registerForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            // Almacenar el nuevo usuario (¡Esto es solo un ejemplo! No uses esto en producción)
+            let usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
+            usuarios.push({ username, password });
+            localStorage.setItem('usuarios', JSON.stringify(usuarios));
+
+            alert('Usuario registrado con éxito.');
+            window.location.href = 'index.html'; // Redirigir a la página de inicio de sesión
+        });
+    </script>
+</body>
+</html>
