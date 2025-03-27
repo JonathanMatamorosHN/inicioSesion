@@ -52,7 +52,7 @@
 <body>
 <script>document.getElementById('botonProtegido').addEventListener('click', function() {
     var contraseña = prompt("Ingresa la contraseña:");
-    if (contraseña === "Kennedy2026") { // Reemplaza con tu contraseña
+    if (contraseña === "Kennedy2025") { // Reemplaza con tu contraseña
         window.location.href = "ver_usuario.html"; // Redirige a la página deseada
     } else {
         alert("Contraseña incorrecta.");
@@ -76,13 +76,11 @@
              if (usuarioEncontrado) {
   alert("¡Bienvenido " + username + "!");
                 window.location.href = 'pagina1.html';
-            }else {
-                 alert('Usuario o contraseña incorrectos');
-             }
+            }
          });
      </script>
 
-     <script>
+  <script>
         document.getElementById('loginForm').addEventListener('submit', function(event) {
             event.preventDefault();
 
@@ -92,13 +90,15 @@
             // Obtener usuarios almacenados (¡Esto es solo un ejemplo! No uses esto en producción)
             const usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
 
-            const usuarioEncontrados = usuarios.find(usuario => usuario.username === username && usuario.password === password);
+            const usuarioEncontrado = usuarios.find(usuario => usuario.username === username && usuario.password === password);
 
-            if (usuarioEncontrados) {
-                 alert("¡Bienvenido " + username + "!");
+            if (usuarioEncontrado) {
+                alert("¡Bienvenido " + username + "!");
                 window.location.href = 'pagina1.html';
+            } else {
+                alert('Usuario o contraseña incorrectos');
             }
-         });
-    </script>  
+        });
+    </script>
 </body>
 </html>
